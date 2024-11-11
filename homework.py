@@ -25,7 +25,8 @@ def get_english_words():
 #функция перевода
 def translation(text):
     trans = Translator()
-    return trans.translate(text, dest='ru')
+    result = trans.translate(text, dest='ru')
+    return result.text
 
 # Создаём функцию, которая будет делать саму игру
 def word_game():
@@ -36,12 +37,12 @@ def word_game():
         word_definition = translation(word_dict.get("english_word_definition"))
 
         # Начинаем игру
-        print(f"Значение слова - {word_definition.text}")
+        print(f"Значение слова - {word_definition}")
         user = input("Что это за слово? ")
-        if user == word.text:
+        if user == word:
             print("Все верно!")
         else:
-            print(f"\nОтвет неверный, было загадано это слово - {word.text}")
+            print(f"\nОтвет неверный, было загадано это слово - {word}")
 
         # Создаём возможность закончить игру
         play_again = input("\nХотите сыграть еще раз? y/n ")
